@@ -25,7 +25,7 @@
   --accent: #1f5c4a;
   --accent-soft: #e1ece7;
   --flag: #fff3c4;
-  --pdt: #5f7656; --pdt-soft: #eef1ea; --lnj: #c8301f; --lnj-soft: #f9e6e3; --verdict: #b4532a; --verdict-soft: #f8ebe4;
+  --pdt: #5f7656; --pdt-soft: #eef1ea; --lnj: #c8301f; --lnj-soft: #f9e6e3; --verdict: #b4532a; --verdict-soft: #f8ebe4; --fe: #a8541f; --fe-soft: #fbeee3;
   --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
   --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
@@ -34,14 +34,14 @@
   :root:not([data-theme="light"]) {
     --bg: #0f1614; --surface: #16201d; --ink: #e6ece9; --muted: #9aa8a3;
     --line: #2a3632; --accent: #6fc2a3; --accent-soft: #1b2e28; --flag: #4a4120;
-    --pdt: #a9c19f; --pdt-soft: #222b20; --lnj: #f07a6c; --lnj-soft: #33201d; --verdict: #ec9a72; --verdict-soft: #33251e;
+    --pdt: #a9c19f; --pdt-soft: #222b20; --lnj: #f07a6c; --lnj-soft: #33201d; --verdict: #ec9a72; --verdict-soft: #33251e; --fe: #f0a868; --fe-soft: #352719;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #0f1614; --surface: #16201d; --ink: #e6ece9; --muted: #9aa8a3;
   --line: #2a3632; --accent: #6fc2a3; --accent-soft: #1b2e28; --flag: #4a4120;
-  --pdt: #a9c19f; --pdt-soft: #222b20; --lnj: #f07a6c; --lnj-soft: #33201d; --verdict: #ec9a72; --verdict-soft: #33251e;
+  --pdt: #a9c19f; --pdt-soft: #222b20; --lnj: #f07a6c; --lnj-soft: #33201d; --verdict: #ec9a72; --verdict-soft: #33251e; --fe: #f0a868; --fe-soft: #352719;
     color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -118,6 +118,7 @@ section.block { padding-block: 56px; border-top: 1px solid var(--line); }
 .pdt { --p: var(--pdt); --ps: var(--pdt-soft); }
 .lnj { --p: var(--lnj); --ps: var(--lnj-soft); }
 .verdict { --p: var(--verdict); --ps: var(--verdict-soft); }
+.fe { --p: var(--fe); --ps: var(--fe-soft); }
 .feature .status { background: var(--ps); color: var(--p); }
 .feature h3 { color: var(--p); font-size: 1.45rem; }
 .pdt h3 { font-family: "Playfair Display", Georgia, serif; font-stretch: normal; }

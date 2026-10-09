@@ -25,7 +25,7 @@
   --accent: #1f5c4a;
   --accent-soft: #e1ece7;
   --flag: #fff3c4;
-  --pdt: #5f7656; --pdt-soft: #eef1ea; --lnj: #c8301f; --lnj-soft: #f9e6e3; --verdict: #b4532a; --verdict-soft: #f8ebe4;
+  --pdt: #5f7656; --pdt-soft: #eef1ea; --lnj: #c8301f; --lnj-soft: #f9e6e3; --verdict: #b4532a; --verdict-soft: #f8ebe4; --fe: #a8541f; --fe-soft: #fbeee3;
   --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
   --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
@@ -34,14 +34,14 @@
   :root:not([data-theme="light"]) {
     --bg: #0f1614; --surface: #16201d; --ink: #e6ece9; --muted: #9aa8a3;
     --line: #2a3632; --accent: #6fc2a3; --accent-soft: #1b2e28; --flag: #4a4120;
-    --pdt: #a9c19f; --pdt-soft: #222b20; --lnj: #f07a6c; --lnj-soft: #33201d; --verdict: #ec9a72; --verdict-soft: #33251e;
+    --pdt: #a9c19f; --pdt-soft: #222b20; --lnj: #f07a6c; --lnj-soft: #33201d; --verdict: #ec9a72; --verdict-soft: #33251e; --fe: #f0a868; --fe-soft: #352719;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #0f1614; --surface: #16201d; --ink: #e6ece9; --muted: #9aa8a3;
   --line: #2a3632; --accent: #6fc2a3; --accent-soft: #1b2e28; --flag: #4a4120;
-  --pdt: #a9c19f; --pdt-soft: #222b20; --lnj: #f07a6c; --lnj-soft: #33201d; --verdict: #ec9a72; --verdict-soft: #33251e;
+  --pdt: #a9c19f; --pdt-soft: #222b20; --lnj: #f07a6c; --lnj-soft: #33201d; --verdict: #ec9a72; --verdict-soft: #33251e; --fe: #f0a868; --fe-soft: #352719;
     color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -118,6 +118,7 @@ section.block { padding-block: 56px; border-top: 1px solid var(--line); }
 .pdt { --p: var(--pdt); --ps: var(--pdt-soft); }
 .lnj { --p: var(--lnj); --ps: var(--lnj-soft); }
 .verdict { --p: var(--verdict); --ps: var(--verdict-soft); }
+.fe { --p: var(--fe); --ps: var(--fe-soft); }
 .feature .status { background: var(--ps); color: var(--p); }
 .feature h3 { color: var(--p); font-size: 1.45rem; }
 .pdt h3 { font-family: "Playfair Display", Georgia, serif; font-stretch: normal; }
@@ -196,7 +197,7 @@ html { scroll-behavior: smooth; }
       <div class="block-head">
         <span class="label">Software</span>
         <h2>Tools for businesses</h2>
-        <p>We build three separate software products, each designed for a different kind of business: Perfect Day Together for wedding planners, Restaurant Social Engagement for restaurants and venues, and Verdict for YouTube creators. Each one is its own standalone solution.</p>
+        <p>We build four separate software products. Perfect Day Together is for wedding planners, Restaurant Social Engagement is for restaurants and venues, and Verdict is for YouTube creators. Fair Enough is free for anyone with a small, everyday disagreement. Each one is its own standalone solution.</p>
       </div>
       <div class="ledger">
         <article class="item feature pdt">
@@ -272,6 +273,33 @@ html { scroll-behavior: smooth; }
             <blockquote class="example"><span class="sub">What a ruling looks like</span><p>One roommate always cleans the brushes. The other says hauling lumber is the harder job.</p><p><b>The Case of the Abandoned Paint Brushes:</b> "Whoever opens the can owns the brush 'til it's clean, no exceptions, no 'soaking' loopholes. Hauling lumber is real work, but it's not a free pass on brush duty."</p></blockquote>
           </div>
           <p class="fine">Rulings are lighthearted, non-binding, and not legal, financial, or professional advice. The judge's voice is built with your input and approval.</p>
+        </article>
+        <article class="item feature fe">
+          <div class="feature-main">
+            <span class="status">Available · Free</span>
+            <h3>Fair Enough</h3>
+            <span class="for">For friends, roommates, couples and coworkers</span>
+            <p class="pitch">Settle the argument. Stay friends.</p>
+            <p>Fair Enough is a free web app where two people each say their side of a small disagreement, and an impartial AI referee weighs both sides and suggests a fair, non-binding resolution in about a minute. No login required.</p>
+            <ul class="gets">
+              <li><b>No login, no email.</b> Access is through a private link you share only with the person you're disagreeing with.</li>
+              <li><b>"Keep it Cool" mode.</b> Neither side sees the other's exact words. Each person gets a calm, neutral summary of the other's position instead.</li>
+              <li><b>Five mediator styles.</b> Balanced, Straight Shooter, The Grandmother, The Sportscaster or Dramatic Courtroom. Same fair decision underneath; you choose how it's delivered.</li>
+              <li><b>Shareable results.</b> Each resolution has a name-free public page that previews well when posted. The full ruling stays private to the two people.</li>
+              <li><b>Delete anytime.</b> Either person can permanently delete a case. Everything else is automatically deleted after 90 days.</li>
+            </ul>
+            <p class="links"><a href="https://getfairenough.com" target="_blank" rel="noopener">Start a dispute: getfairenough.com</a><span>Questions? support@getfairenough.com</span></p>
+          </div>
+          <div class="feature-side">
+            <span class="sub">How it works</span>
+            <ol class="steps">
+              <li><span><b>Describe your side</b> of the disagreement.</span></li>
+              <li><span><b>Send the link you get</b> to the other person so they can add theirs.</span></li>
+              <li><span><b>Get a fair resolution.</b> We ask a clarifying question or two if needed, then suggest a fair resolution, usually within a minute.</span></li>
+            </ol>
+            <blockquote class="example"><span class="sub">What a result looks like</span><p>Sam says they always unload the dishwasher and Riley starts it and disappears. Riley says they do the scrubbing of pots that don't fit, which is the worse job.</p><p><b>The Matter of the Abandoned Dishwasher:</b> Whoever starts the dishwasher owns it end to end, including unloading it the next morning. Pots and pans that need hand-washing are the other person's job that same night. Neither of them gets to start a load and walk away.</p></blockquote>
+          </div>
+          <p class="fine">For small, low-stakes disagreements between people who basically get along. Not for anything involving safety, harassment, money that really matters, or legal questions. Fair Enough is a lighthearted tool for small disagreements. Its suggestions are non-binding and are not legal, financial, or professional advice.</p>
         </article>
         <article class="item more">
           <h3>More on the way</h3>

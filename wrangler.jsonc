@@ -4,5 +4,9 @@
   "assets": {
     "directory": "./site",
     "not_found_handling": "404-page"
-  }
+  },
+  "routes": [
+    { "pattern": "bolansolutions.com", "custom_domain": true },
+    { "pattern": "www.bolansolutions.com", "custom_domain": true }
+  ]
 }

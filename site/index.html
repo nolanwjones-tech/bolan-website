@@ -22,8 +22,9 @@
   --ink: #16211e;
   --muted: #55615d;
   --line: #d5dcd9;
-  --accent: #1f5c4a;
-  --accent-soft: #e1ece7;
+  --accent: #0b7a5a;
+  --accent-soft: #dcf1e8;
+  --hero-bg: #08110e; --hero-ink: #eef6f2; --hero-muted: #9db3aa; --hero-line: rgba(140, 220, 190, .16); --glow: #3ddc97; --glow-2: #38bdf8;
   --flag: #fff3c4;
   --pdt: #5f7656; --pdt-soft: #eef1ea; --lnj: #c8301f; --lnj-soft: #f9e6e3; --verdict: #b4532a; --verdict-soft: #f8ebe4; --fe: #a8541f; --fe-soft: #fbeee3;
   --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
@@ -33,14 +34,14 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #0f1614; --surface: #16201d; --ink: #e6ece9; --muted: #9aa8a3;
-    --line: #2a3632; --accent: #6fc2a3; --accent-soft: #1b2e28; --flag: #4a4120;
+    --line: #2a3632; --accent: #3ddc97; --accent-soft: #12291f; --flag: #4a4120;
     --pdt: #a9c19f; --pdt-soft: #222b20; --lnj: #f07a6c; --lnj-soft: #33201d; --verdict: #ec9a72; --verdict-soft: #33251e; --fe: #f0a868; --fe-soft: #352719;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #0f1614; --surface: #16201d; --ink: #e6ece9; --muted: #9aa8a3;
-  --line: #2a3632; --accent: #6fc2a3; --accent-soft: #1b2e28; --flag: #4a4120;
+  --line: #2a3632; --accent: #3ddc97; --accent-soft: #12291f; --flag: #4a4120;
   --pdt: #a9c19f; --pdt-soft: #222b20; --lnj: #f07a6c; --lnj-soft: #33201d; --verdict: #ec9a72; --verdict-soft: #33251e; --fe: #f0a868; --fe-soft: #352719;
     color-scheme: dark;
 }
@@ -98,7 +99,7 @@ section.block { padding-block: 56px; border-top: 1px solid var(--line); }
 }
 .item p { color: var(--muted); font-size: 1rem; }
 .item .for { font: 500 .78rem/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-top: -4px; }
-.item.feature { grid-column: 1 / -1; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px 40px; }
+.item.feature { grid-column: 1 / -1; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 24px 40px; }
 .feature-main { display: grid; gap: 12px; align-content: start; min-width: 0; }
 .feature .pitch { color: var(--ink); font-size: 1.15rem; font-weight: 600; }
 .visit { justify-self: start; font-weight: 600; }
@@ -146,15 +147,86 @@ footer { padding-block: 32px 48px; border-top: 1px solid var(--line); color: var
 }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
 html { scroll-behavior: smooth; }
+
+/* Tech refresh: sticky glass header, dark animated hero, product index tiles */
+html { overflow-x: clip; }
+body { padding-inline: 0; }
+.wrap { padding-inline: 20px; max-width: 1080px; }
+header.site { display: block; position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; padding: 0; border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: saturate(160%) blur(12px); -webkit-backdrop-filter: saturate(160%) blur(12px); }
+header.site .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 28px; padding-block: 14px; }
+nav { align-items: center; }
+nav a { transition: color .15s; }
+nav a.nav-cta { color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent); padding: 6px 14px; border-radius: 999px; }
+nav a.nav-cta:hover { background: var(--accent-soft); }
+
+.hero { position: relative; isolation: isolate; overflow: hidden; background: var(--hero-bg); color: var(--hero-ink);
+  padding-block: clamp(56px, 9vw, 104px) clamp(40px, 6vw, 72px); display: block; }
+.hero::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(60% 70% at 85% 10%, color-mix(in srgb, var(--glow) 22%, transparent), transparent 70%),
+    radial-gradient(50% 60% at 10% 100%, color-mix(in srgb, var(--glow-2) 16%, transparent), transparent 70%); }
+.hero::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .5;
+  background-image: linear-gradient(var(--hero-line) 1px, transparent 1px), linear-gradient(90deg, var(--hero-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(80% 80% at 50% 30%, #000 30%, transparent 85%); mask-image: radial-gradient(80% 80% at 50% 30%, #000 30%, transparent 85%); }
+.hero-net { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; }
+.hero-inner { display: grid; gap: 22px; }
+.hero h1 { color: var(--hero-ink); font-size: clamp(2.4rem, 6.4vw, 4.4rem); max-width: 16ch; animation: rise .7s cubic-bezier(.2,.7,.2,1) both; }
+.grad { background: linear-gradient(90deg, var(--glow), var(--glow-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero p.lede { color: var(--hero-muted); font-size: clamp(1.05rem, 1.6vw, 1.25rem); animation: rise .7s .08s cubic-bezier(.2,.7,.2,1) both; }
+.hero-kicker { display: inline-flex; align-items: center; gap: 10px; justify-self: start; font: 500 .74rem/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase;
+  color: var(--hero-ink); border: 1px solid var(--hero-line); background: rgba(255,255,255,.04); padding: 8px 12px; border-radius: 999px; }
+.hero-kicker i { width: 7px; height: 7px; border-radius: 50%; background: var(--glow); animation: pulse 2.4s infinite; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; animation: rise .7s .16s cubic-bezier(.2,.7,.2,1) both; }
+.btn { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; text-decoration: none; padding: 12px 20px; border-radius: 10px; transition: transform .15s, box-shadow .2s, background .2s; }
+.btn.primary { background: var(--glow); color: #04130d; box-shadow: 0 8px 30px -10px var(--glow); }
+.btn.primary:hover { transform: translateY(-1px); box-shadow: 0 12px 36px -10px var(--glow); }
+.btn.ghost { color: var(--hero-ink); border: 1px solid var(--hero-line); background: rgba(255,255,255,.04); }
+.btn.ghost:hover { background: rgba(255,255,255,.09); }
+.btn:focus-visible, .tile:focus-visible { outline: 2px solid var(--glow); outline-offset: 3px; }
+
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 12px; margin-top: clamp(24px, 4vw, 44px); animation: rise .7s .24s cubic-bezier(.2,.7,.2,1) both; }
+.tile { position: relative; display: grid; gap: 6px; align-content: start; min-width: 0; padding: 16px 40px 18px 18px; border-radius: 12px; text-decoration: none; color: var(--hero-ink);
+  background: rgba(255,255,255,.035); border: 1px solid var(--hero-line); transition: transform .2s, border-color .2s, background .2s; }
+.tile:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--c) 60%, transparent); background: rgba(255,255,255,.06); }
+.tile b { font: 600 1.05rem/1.25 var(--font-display); font-stretch: 112%; }
+.t-cat { display: flex; align-items: center; gap: 8px; font: 500 .68rem/1 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--hero-muted); }
+.t-cat::before { content: ""; width: 8px; height: 8px; border-radius: 2px; background: var(--c); box-shadow: 0 0 12px var(--c); }
+.t-line { color: var(--hero-muted); font-size: .92rem; line-height: 1.4; }
+.tile::after { content: "→"; position: absolute; right: 16px; top: 14px; color: var(--hero-muted); transition: transform .2s, color .2s; }
+.tile:hover::after { transform: translateX(3px); color: var(--c); }
+
+main > section.block:first-child { border-top: 0; }
+.item { border-radius: 12px; transition: transform .2s, box-shadow .25s, border-color .2s; scroll-margin-top: 90px; }
+.item:not(.more):hover { transform: translateY(-2px); box-shadow: 0 18px 40px -24px color-mix(in srgb, var(--ink) 45%, transparent); border-color: color-mix(in srgb, var(--p, var(--accent)) 35%, var(--line)); }
+.item.feature { overflow: hidden; position: relative; }
+.item.feature::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 160px; pointer-events: none;
+  background: radial-gradient(60% 100% at 0% 0%, color-mix(in srgb, var(--p) 10%, transparent), transparent 70%); }
+.item.feature > * { position: relative; }
+.example { border-radius: 10px; }
+.label { display: inline-flex; align-items: center; gap: 8px; }
+.label::before { content: ""; width: 18px; height: 2px; background: var(--accent); }
+section.block { scroll-margin-top: 70px; }
+
+@keyframes rise { from { transform: translateY(14px); } to { transform: none; } }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--glow) 60%, transparent); } 70% { box-shadow: 0 0 0 10px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+@media (prefers-reduced-motion: reduce) {
+  .hero h1, .hero .lede, .cta-row, .tiles, .hero-kicker i { animation: none; }
+  .tile, .item, .btn { transition: none; }
+}
+@media (max-width: 560px) { nav { gap: 4px 16px; } nav a { font-size: .9rem; } }
+.page-intro { display: grid; gap: 22px; padding-block: 72px 48px; }
+.page-intro p.lede { font-size: 1.25rem; color: var(--muted); }
 </style>
 </head>
 <body>
 
-<div class="wrap">
-  <header class="site">
+<header class="site">
+  <div class="wrap bar">
     <a class="mark" href="#top" aria-label="Bolan LLC home">
       <svg viewBox="0 0 30 30" aria-hidden="true">
-        <rect x="1" y="1" width="28" height="28" rx="4" fill="var(--accent)"/>
+        <rect x="1" y="1" width="28" height="28" rx="6" fill="var(--accent)"/>
         <path d="M9 7h7.5a4.5 4.5 0 0 1 0 9H9zM9 16h8.5a4 4 0 0 1 0 8H9z" fill="none" stroke="var(--bg)" stroke-width="2.6" stroke-linejoin="round"/>
       </svg>
       <span>BOLAN LLC</span>
@@ -163,15 +235,34 @@ html { scroll-behavior: smooth; }
       <a href="#products">Products</a>
       <a href="#software">Software</a>
       <a href="#company">Company</a>
-      <a href="#contact">Contact</a>
+      <a href="#contact" class="nav-cta">Contact</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <main id="top">
-    <section class="hero">
-      <h1>Home goods and software for businesses.</h1>
-      <p class="lede">Bolan LLC makes physical products and software. Our first products are WreathLuxe wreath goods, alongside software for wedding planners, restaurants and venues, and YouTube creators.</p>
-    </section>
+<section class="hero" id="top">
+  <canvas class="hero-net" aria-hidden="true"></canvas>
+  <div class="wrap hero-inner">
+    <span class="hero-kicker"><i></i>Software &amp; product studio</span>
+    <h1>Home goods and <span class="grad">software</span> for businesses.</h1>
+    <p class="lede">Bolan LLC makes physical products and software. Our first products are WreathLuxe wreath goods, alongside software for wedding planners, restaurants and venues, and YouTube creators.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="#software">Explore our software</a>
+      <a class="btn ghost" href="#contact">Get in touch</a>
+    </div>
+    <div class="tiles">
+      <a class="tile" href="#perfect-day-together" style="--c:#8fb584"><span class="t-cat">Wedding planners</span><b>Perfect Day Together</b><span class="t-line">Help your couples work it out themselves.</span></a>
+      <a class="tile" href="#restaurant-social-engagement" style="--c:#f07a6c"><span class="t-cat">Restaurants &amp; venues</span><b>Restaurant Social Engagement</b><span class="t-line">End the argument. Get to your restaurant.</span></a>
+      <a class="tile" href="#verdict" style="--c:#ec9a72"><span class="t-cat">YouTube creators</span><b>Verdict</b><span class="t-line">Turn your personality into a judge your fans can use.</span></a>
+      <a class="tile" href="#fair-enough" style="--c:#f0b06e"><span class="t-cat">Everyone</span><b>Fair Enough</b><span class="t-line">Settle the argument. Stay friends.</span></a>
+      <a class="tile" href="#wreath-hanger" style="--c:#7fd6c0"><span class="t-cat">Home goods</span><b>WreathLuxe Wreath Hanger</b><span class="t-line">A beautiful display with dependable protection.</span></a>
+      <a class="tile" href="#wreath-container" style="--c:#7fd6c0"><span class="t-cat">Home goods</span><b>WreathLuxe Wreath Container</b><span class="t-line">Protection on the door and off.</span></a>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <main>
 
     <section class="block" id="products">
       <div class="block-head">
@@ -180,12 +271,12 @@ html { scroll-behavior: smooth; }
         <p>Our first physical product line, WreathLuxe, is built around wreaths.</p>
       </div>
       <div class="ledger">
-        <article class="item">
+        <article class="item" id="wreath-hanger">
           <span class="status">In development</span>
           <h3>WreathLuxe Wreath Hanger</h3>
           <p>Designed for homeowners who refuse to compromise beauty for functionality, the WreathLuxe Wreath Hanger provides a beautiful display with dependable protection. It keeps every wreath flawlessly in place and entryways pristine through changing seasons, strong winds and daily door use.</p>
         </article>
-        <article class="item">
+        <article class="item" id="wreath-container">
           <span class="status">In development</span>
           <h3>WreathLuxe Wreath Container</h3>
           <p>Give every wreath the protection it deserves, on the door and off. Together with the hanger, the WreathLuxe Wreath Container completes a display-and-storage solution designed to protect your door, preserve your décor and simplify every seasonal transition.</p>
@@ -200,7 +291,7 @@ html { scroll-behavior: smooth; }
         <p>We build four separate software products. Perfect Day Together is for wedding planners, Restaurant Social Engagement is for restaurants and venues, and Verdict is for YouTube creators. Fair Enough is free for anyone with a small, everyday disagreement. Each one is its own standalone solution.</p>
       </div>
       <div class="ledger">
-        <article class="item feature pdt">
+        <article class="item feature pdt" id="perfect-day-together">
           <div class="feature-main">
             <span class="status">Available</span>
             <h3>Perfect Day Together</h3>
@@ -223,7 +314,7 @@ html { scroll-behavior: smooth; }
           <p class="fine">Suggestions are non-binding and are not legal, financial, or professional advice. Intended for low-stakes wedding-planning disagreements.</p>
         </article>
 
-        <article class="item feature lnj">
+        <article class="item feature lnj" id="restaurant-social-engagement">
           <div class="feature-main">
             <h3>Restaurant Social Engagement</h3>
             <span class="for">For restaurants and venues</span>
@@ -249,7 +340,7 @@ html { scroll-behavior: smooth; }
           <p class="fine">Rulings are lighthearted, non-binding, and not legal, financial, or professional advice.</p>
         </article>
 
-        <article class="item feature verdict">
+        <article class="item feature verdict" id="verdict">
           <div class="feature-main">
             <h3>Verdict</h3>
             <span class="for">For YouTube creators</span>
@@ -274,7 +365,7 @@ html { scroll-behavior: smooth; }
           </div>
           <p class="fine">Rulings are lighthearted, non-binding, and not legal, financial, or professional advice. The judge's voice is built with your input and approval.</p>
         </article>
-        <article class="item feature fe">
+        <article class="item feature fe" id="fair-enough">
           <div class="feature-main">
             <span class="status">Available · Free</span>
             <h3>Fair Enough</h3>
@@ -337,5 +428,46 @@ html { scroll-behavior: smooth; }
     <span>A Wyoming limited liability company. <a href="privacy.html">Privacy</a></span>
   </footer>
 </div>
+
+<script>
+(() => {
+  const c = document.querySelector('.hero-net');
+  if (!c || !c.getContext) return;
+  const ctx = c.getContext('2d');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let w, h, pts = [], raf;
+  function size() {
+    const r = c.getBoundingClientRect(), d = Math.min(window.devicePixelRatio || 1, 2);
+    w = r.width; h = r.height; c.width = w * d; c.height = h * d; ctx.setTransform(d, 0, 0, d, 0, 0);
+    const n = Math.round(Math.min(70, Math.max(24, w * h / 16000)));
+    pts = Array.from({ length: n }, () => ({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - .5) * .25, vy: (Math.random() - .5) * .25 }));
+  }
+  function frame() {
+    ctx.clearRect(0, 0, w, h);
+    for (const p of pts) {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > w) p.vx *= -1;
+      if (p.y < 0 || p.y > h) p.vy *= -1;
+    }
+    for (let i = 0; i < pts.length; i++) {
+      const a = pts[i];
+      for (let j = i + 1; j < pts.length; j++) {
+        const b = pts[j], dx = a.x - b.x, dy = a.y - b.y, d2 = dx * dx + dy * dy;
+        if (d2 < 15000) {
+          ctx.strokeStyle = 'rgba(61,220,151,' + (0.16 * (1 - d2 / 15000)).toFixed(3) + ')';
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+        }
+      }
+      ctx.fillStyle = 'rgba(160,240,205,.55)';
+      ctx.beginPath(); ctx.arc(a.x, a.y, 1.4, 0, Math.PI * 2); ctx.fill();
+    }
+    if (!reduce && !document.hidden) raf = requestAnimationFrame(frame);
+  }
+  size(); frame();
+  let t;
+  window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => { cancelAnimationFrame(raf); size(); frame(); }, 150); });
+  document.addEventListener('visibilitychange', () => { cancelAnimationFrame(raf); if (!document.hidden) frame(); });
+})();
+</script>
 </body>
 </html>

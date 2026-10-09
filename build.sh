@@ -25,10 +25,10 @@ DESC="Bolan LLC is a Wyoming company developing home goods and software for busi
 
 # Sub-pages reuse the header, styles and footer, with their own main content.
 page() { # $1 file, $2 title, $3 main-content file
-  HEADER=$(echo "$CONTENT" | sed -n '/<div class="wrap">/,/<\/header>/p' | sed 's|href="#|href="index.html#|g')
+  HEADER=$(echo "$CONTENT" | sed -n '/<header class="site">/,/<\/header>/p' | sed 's|href="#|href="index.html#|g')
   FOOTER=$(echo "$CONTENT" | sed -n '/<footer>/,$p')
   { head_meta "$DESC"; echo "$STYLE_AND_HEAD" | sed "s|<title>Bolan LLC</title>|<title>$2 · Bolan LLC</title>|"
-    echo '</head>'; echo '<body>'; echo "$HEADER"; cat "$3"; echo "$FOOTER"; echo '</body>'; echo '</html>'; } > "site/$1"
+    echo '</head>'; echo '<body>'; echo "$HEADER"; echo '<div class="wrap">'; cat "$3"; echo "$FOOTER"; echo '</body>'; echo '</html>'; } > "site/$1"
 }
 page privacy.html "Privacy" pages/privacy.html
 page 404.html "Page not found" pages/404.html

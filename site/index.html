@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Bolan LLC is a Wyoming company developing home goods and software for businesses.">
+<meta property="og:title" content="Bolan LLC">
+<meta property="og:description" content="Bolan LLC is a Wyoming company developing home goods and software for businesses.">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://bolansolutions.com/">
+<meta property="og:url" content="https://bolansolutions.com/">
+<title>Bolan LLC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,600;112,800&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@500&family=Playfair+Display:wght@600&display=swap">
+<style>
+/* Layout: one scrolling page, left-aligned editorial column, product lines as two plain ledgers */
+:root {
+  --bg: #f3f5f4;
+  --surface: #ffffff;
+  --ink: #16211e;
+  --muted: #55615d;
+  --line: #d5dcd9;
+  --accent: #1f5c4a;
+  --accent-soft: #e1ece7;
+  --flag: #fff3c4;
+  --pdt: #5f7656; --pdt-soft: #eef1ea; --lnj: #c8301f; --lnj-soft: #f9e6e3; --verdict: #b4532a; --verdict-soft: #f8ebe4;
+  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1614; --surface: #16201d; --ink: #e6ece9; --muted: #9aa8a3;
+    --line: #2a3632; --accent: #6fc2a3; --accent-soft: #1b2e28; --flag: #4a4120;
+    --pdt: #a9c19f; --pdt-soft: #222b20; --lnj: #f07a6c; --lnj-soft: #33201d; --verdict: #ec9a72; --verdict-soft: #33251e;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1614; --surface: #16201d; --ink: #e6ece9; --muted: #9aa8a3;
+  --line: #2a3632; --accent: #6fc2a3; --accent-soft: #1b2e28; --flag: #4a4120;
+  --pdt: #a9c19f; --pdt-soft: #222b20; --lnj: #f07a6c; --lnj-soft: #33201d; --verdict: #ec9a72; --verdict-soft: #33251e;
+    color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font: 400 1.0625rem/1.6 var(--font-body);
+  margin: 0; padding-inline: 20px;
+}
+.wrap { max-width: 1040px; margin: 0 auto; }
+a { color: var(--accent); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+header.site {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 12px 32px; padding-block: 22px; border-bottom: 1px solid var(--line);
+}
+.mark { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+.mark svg { width: 30px; height: 30px; flex: none; }
+.mark span { font: 800 1.25rem/1 var(--font-display); font-stretch: 112%; letter-spacing: .02em; }
+nav { display: flex; flex-wrap: wrap; gap: 4px 22px; }
+nav a { color: var(--muted); text-decoration: none; font-weight: 600; font-size: .95rem; }
+nav a:hover { color: var(--ink); }
+
+.label {
+  font: 500 .75rem/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent);
+}
+h1, h2, h3 { font-family: var(--font-display); font-stretch: 112%; text-wrap: balance; margin: 0; }
+h1 { font-weight: 800; font-size: clamp(2.2rem, 6vw, 3.9rem); line-height: 1.02; letter-spacing: -.01em; }
+h2 { font-weight: 800; font-size: clamp(1.6rem, 3.6vw, 2.3rem); line-height: 1.1; }
+h3 { font-weight: 600; font-size: 1.2rem; line-height: 1.25; }
+p { margin: 0; max-width: 62ch; }
+
+.hero { display: grid; gap: 22px; padding-block: 72px 64px; }
+.hero p.lede { font-size: 1.25rem; color: var(--muted); }
+.facts {
+  display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 8px;
+  font: 500 .82rem/1.4 var(--font-mono); color: var(--muted);
+}
+.facts b { color: var(--ink); font-weight: 500; }
+
+section.block { padding-block: 56px; border-top: 1px solid var(--line); }
+.block-head { display: grid; gap: 12px; margin-bottom: 32px; }
+.block-head p { color: var(--muted); }
+
+.ledger { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.item {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 6px;
+  padding: 24px; display: grid; gap: 12px; align-content: start; min-width: 0;
+}
+.item .status {
+  justify-self: start; font: 500 .7rem/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase;
+  background: var(--accent-soft); color: var(--accent); padding: 6px 8px; border-radius: 3px;
+}
+.item p { color: var(--muted); font-size: 1rem; }
+.item .for { font: 500 .78rem/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-top: -4px; }
+.item.feature { grid-column: 1 / -1; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px 40px; }
+.feature-main { display: grid; gap: 12px; align-content: start; min-width: 0; }
+.feature .pitch { color: var(--ink); font-size: 1.15rem; font-weight: 600; }
+.visit { justify-self: start; font-weight: 600; }
+.steps { margin: 0; padding: 0; list-style: none; counter-reset: step; display: grid; gap: 14px; align-content: start; min-width: 0; }
+.steps li { counter-increment: step; display: grid; grid-template-columns: 2rem 1fr; gap: 8px; color: var(--muted); font-size: 1rem; }
+.steps li::before { content: counter(step); font: 500 .8rem/1.9 var(--font-mono); color: var(--accent); background: var(--accent-soft); border-radius: 50%; width: 1.8rem; height: 1.8rem; text-align: center; }
+.steps b { color: var(--ink); font-weight: 600; }
+.feature-side { display: grid; gap: 14px; align-content: start; min-width: 0; }
+.sub { font: 500 .72rem/1.2 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.feature .links { display: grid; gap: 4px; }
+.feature .links a { font-weight: 600; }
+.gets { margin: 0; padding-left: 1.1rem; display: grid; gap: 8px; color: var(--muted); font-size: 1rem; }
+.gets b, .feature-main p b { color: var(--ink); font-weight: 600; }
+.example { margin: 6px 0 0; padding: 16px 18px; background: var(--bg); border-radius: 4px; display: grid; gap: 8px; font-size: .98rem; color: var(--muted); }
+.example b { color: var(--ink); }
+.fine { grid-column: 1 / -1; font-size: .82rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 12px; max-width: none; }
+.pdt { --p: var(--pdt); --ps: var(--pdt-soft); }
+.lnj { --p: var(--lnj); --ps: var(--lnj-soft); }
+.verdict { --p: var(--verdict); --ps: var(--verdict-soft); }
+.feature .status { background: var(--ps); color: var(--p); }
+.feature h3 { color: var(--p); font-size: 1.45rem; }
+.pdt h3 { font-family: "Playfair Display", Georgia, serif; font-stretch: normal; }
+.feature .steps li::before { background: var(--ps); color: var(--p); }
+.feature a { color: var(--p); }
+.item.more { background: transparent; border-style: dashed; }
+
+.about { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px 48px; }
+dl { margin: 0; display: grid; gap: 14px; }
+dl div { display: grid; grid-template-columns: 9.5rem 1fr; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+dt { font: 500 .78rem/1.6 var(--font-mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+dd { margin: 0; min-width: 0; }
+
+.todo { background: var(--flag); padding: 0 4px; border-radius: 2px; }
+
+.contact { display: grid; gap: 16px; }
+.contact .email { font: 600 clamp(1.3rem, 3vw, 1.7rem)/1.2 var(--font-display); font-stretch: 112%; }
+
+footer { padding-block: 32px 48px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem;
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
+
+@media (max-width: 480px) {
+  dl div { grid-template-columns: 1fr; gap: 2px; }
+  .hero { padding-block: 48px 44px; }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+html { scroll-behavior: smooth; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="site">
+    <a class="mark" href="#top" aria-label="Bolan LLC home">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <rect x="1" y="1" width="28" height="28" rx="4" fill="var(--accent)"/>
+        <path d="M9 7h7.5a4.5 4.5 0 0 1 0 9H9zM9 16h8.5a4 4 0 0 1 0 8H9z" fill="none" stroke="var(--bg)" stroke-width="2.6" stroke-linejoin="round"/>
+      </svg>
+      <span>BOLAN LLC</span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="#products">Products</a>
+      <a href="#software">Software</a>
+      <a href="#company">Company</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <h1>Home goods and software for businesses.</h1>
+      <p class="lede">Bolan LLC makes physical products and software. Our first products are WreathLuxe wreath goods, alongside software for wedding planners, restaurants and venues, and YouTube creators.</p>
+    </section>
+
+    <section class="block" id="products">
+      <div class="block-head">
+        <span class="label">Physical products</span>
+        <h2>WreathLuxe home goods</h2>
+        <p>Our first physical product line, WreathLuxe, is built around wreaths.</p>
+      </div>
+      <div class="ledger">
+        <article class="item">
+          <span class="status">In development</span>
+          <h3>WreathLuxe Wreath Hanger</h3>
+          <p>Designed for homeowners who refuse to compromise beauty for functionality, the WreathLuxe Wreath Hanger provides a beautiful display with dependable protection. It keeps every wreath flawlessly in place and entryways pristine through changing seasons, strong winds and daily door use.</p>
+        </article>
+        <article class="item">
+          <span class="status">In development</span>
+          <h3>WreathLuxe Wreath Container</h3>
+          <p>Give every wreath the protection it deserves, on the door and off. Together with the hanger, the WreathLuxe Wreath Container completes a display-and-storage solution designed to protect your door, preserve your décor and simplify every seasonal transition.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="block" id="software">
+      <div class="block-head">
+        <span class="label">Software</span>
+        <h2>Tools for businesses</h2>
+        <p>We build three separate software products, each designed for a different kind of business: Perfect Day Together for wedding planners, Restaurant Social Engagement for restaurants and venues, and Verdict for YouTube creators. Each one is its own standalone solution.</p>
+      </div>
+      <div class="ledger">
+        <article class="item feature pdt">
+          <div class="feature-main">
+            <span class="status">Available</span>
+            <h3>Perfect Day Together</h3>
+            <span class="for">For wedding planners</span>
+            <p class="pitch">Help your couples work it out themselves, before it becomes your problem.</p>
+            <p>You know the moment: a couple can't agree on the guest list, the budget or how involved the in-laws get, and suddenly you're the referee. Perfect Day Together gives them a private, calm way to work it through on their own, so you can get back to planning.</p>
+            <p><b>What you see:</b> the topic (e.g. "Guest list") and where it stands: waiting, reviewing alternatives, or resolved. <b>What stays private:</b> everything they write, the alternatives offered, and any recommendation. Conversations are automatically deleted after 90 days.</p>
+            <p class="links"><a href="https://perfectdaytogether.com" target="_blank" rel="noopener">Try it with one couple: perfectdaytogether.com</a><span>Questions? support@perfectdaytogether.com</span></p>
+          </div>
+          <div class="feature-side">
+            <span class="sub">How it works</span>
+            <ol class="steps">
+              <li><span><b>Send a private link.</b> Create a conversation from your dashboard and send it to your couple. They don't need an account or an app.</span></li>
+              <li><span><b>They each share their side.</b> Privately, in their own words, or with "Keep it Cool," where each hears a calm, neutral summary of the other's position.</span></li>
+              <li><span><b>Alternatives come first.</b> They see 2–4 concrete options neither of them proposed. Most disagreements are settled right here.</span></li>
+              <li><span><b>A recommendation, only if needed.</b> If nothing fits, either of them can request one, non-binding and in the tone you choose.</span></li>
+            </ol>
+            <blockquote class="example"><span class="sub">What it looks like</span><p><b>Guest list.</b> One partner wants to stay near 100 guests to protect the budget; the other wants all 180 relatives invited. The first alternative offered: <b>"Ceremony for All, Reception for Fewer."</b> Invite everyone to the ceremony, where per-person cost is small, and host a smaller, nicer reception within budget. No recommendation needed.</p></blockquote>
+          </div>
+          <p class="fine">Suggestions are non-binding and are not legal, financial, or professional advice. Intended for low-stakes wedding-planning disagreements.</p>
+        </article>
+
+        <article class="item feature lnj">
+          <div class="feature-main">
+            <h3>Restaurant Social Engagement</h3>
+            <span class="for">For restaurants and venues</span>
+            <p class="pitch">End the argument. Get to your restaurant.</p>
+            <p>Every night, groups argue about who's driving, who's buying and where to eat, usually around 1 AM, usually in a group chat. Restaurant Social Engagement turns that moment into a fun, shareable ruling from a judge with your brand's attitude, and every ruling ends at your door.</p>
+            <ul class="gets">
+              <li><b>Your name and look.</b> A version of the site branded as yours, on its own web address.</li>
+              <li><b>A judge with your voice.</b> Blunt, grandmotherly, over-the-top courtroom, or one written just for your brand.</li>
+              <li><b>A closing line you control.</b> A free side, a check-in, a hashtag, a happy-hour reminder. You pick the offer.</li>
+              <li><b>Nothing for you to run.</b> No staff time, no app to maintain. We handle the hosting and upkeep.</li>
+            </ul>
+            <p class="links"><a href="https://mediation-mvp-production-3cad.up.railway.app/" target="_blank" rel="noopener">Try the restaurant app</a></p>
+          </div>
+          <div class="feature-side">
+            <span class="sub">How it works for your guests</span>
+            <ol class="steps">
+              <li><span><b>One person describes the argument.</b> No app and no login.</span></li>
+              <li><span><b>They send a link to the other person,</b> who adds their side.</span></li>
+              <li><span><b>The judge calls it in about a minute.</b> Fast, funny, non-binding, and it closes with your line.</span></li>
+            </ol>
+            <blockquote class="example"><span class="sub">What a ruling looks like</span><p>Marcus says it's Dev's turn to drive. Dev says he always has to pick the spot.</p><p><b>The Case of the Reluctant Driver:</b> "Dev drives. Marcus buys, and doesn't complain about it. Navigating to a place you've been to forty times is not a real job. Go."</p></blockquote>
+          </div>
+          <p class="fine">Rulings are lighthearted, non-binding, and not legal, financial, or professional advice.</p>
+        </article>
+
+        <article class="item feature verdict">
+          <div class="feature-main">
+            <h3>Verdict</h3>
+            <span class="for">For YouTube creators</span>
+            <p class="pitch">Turn your personality into a judge your fans can use.</p>
+            <p>Your audience already loves how you joke, react and call things out. This turns that into something fans can use: they bring a small disagreement and get a fast, funny, non-binding ruling in your voice, ending with your sign-off.</p>
+            <ul class="gets">
+              <li><b>A judge voiced from you.</b> Built from the traits your fans already know from your videos.</li>
+              <li><b>A sign-off you control.</b> A catchphrase, a link, or a sponsor mention at the end of every ruling.</li>
+              <li><b>Your name and look.</b> Branded as yours, on its own web address.</li>
+              <li><b>Shareable rulings.</b> Each one is its own page with a preview that fans can post.</li>
+            </ul>
+            <p class="links"><a href="https://mediation-mvp-production-8867.up.railway.app/" target="_blank" rel="noopener">Try the creator app</a></p>
+          </div>
+          <div class="feature-side">
+            <span class="sub">How it works for your fans</span>
+            <ol class="steps">
+              <li><span><b>A fan describes the disagreement.</b> Chores, a split bill, whose turn it is. No login.</span></li>
+              <li><span><b>They send a link to the other person,</b> who adds their side.</span></li>
+              <li><span><b>They get a ruling in about a minute,</b> in your style.</span></li>
+            </ol>
+            <blockquote class="example"><span class="sub">What a ruling looks like</span><p>One roommate always cleans the brushes. The other says hauling lumber is the harder job.</p><p><b>The Case of the Abandoned Paint Brushes:</b> "Whoever opens the can owns the brush 'til it's clean, no exceptions, no 'soaking' loopholes. Hauling lumber is real work, but it's not a free pass on brush duty."</p></blockquote>
+          </div>
+          <p class="fine">Rulings are lighthearted, non-binding, and not legal, financial, or professional advice. The judge's voice is built with your input and approval.</p>
+        </article>
+        <article class="item more">
+          <h3>More on the way</h3>
+          <p>Additional software products are in planning.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="block" id="company">
+      <div class="about">
+        <div class="block-head">
+          <span class="label">Company</span>
+          <h2>About Bolan LLC</h2>
+          <p>Bolan LLC is owned by business partners Nolan Jones and Bob Challquist.</p>
+        </div>
+        <dl>
+          <div><dt>Legal name</dt><dd>Bolan LLC</dd></div>
+          <div><dt>Entity type</dt><dd>Limited liability company</dd></div>
+          <div><dt>State</dt><dd>Wyoming</dd></div>
+          <div><dt>Owners</dt><dd>Nolan Jones and Bob Challquist</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="block contact" id="contact">
+      <span class="label">Contact</span>
+      <h2>Get in touch</h2>
+      <p>For purchasing, partnership or press inquiries, email us and we will get back to you.</p>
+      <span class="email">hello@bolansolutions.com</span>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 Bolan LLC. All rights reserved.</span>
+    <span>A Wyoming limited liability company. <a href="privacy.html">Privacy</a></span>
+  </footer>
+</div>
+</body>
+</html>

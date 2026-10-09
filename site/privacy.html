@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Bolan LLC is a Wyoming company developing home goods and software for businesses.">
+<meta property="og:title" content="Bolan LLC">
+<meta property="og:description" content="Bolan LLC is a Wyoming company developing home goods and software for businesses.">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://bolansolutions.com/">
+<meta property="og:url" content="https://bolansolutions.com/">
+<title>Privacy · Bolan LLC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,600;112,800&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@500&family=Playfair+Display:wght@600&display=swap">
+<style>
+/* Layout: one scrolling page, left-aligned editorial column, product lines as two plain ledgers */
+:root {
+  --bg: #f3f5f4;
+  --surface: #ffffff;
+  --ink: #16211e;
+  --muted: #55615d;
+  --line: #d5dcd9;
+  --accent: #1f5c4a;
+  --accent-soft: #e1ece7;
+  --flag: #fff3c4;
+  --pdt: #5f7656; --pdt-soft: #eef1ea; --lnj: #c8301f; --lnj-soft: #f9e6e3; --verdict: #b4532a; --verdict-soft: #f8ebe4;
+  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1614; --surface: #16201d; --ink: #e6ece9; --muted: #9aa8a3;
+    --line: #2a3632; --accent: #6fc2a3; --accent-soft: #1b2e28; --flag: #4a4120;
+    --pdt: #a9c19f; --pdt-soft: #222b20; --lnj: #f07a6c; --lnj-soft: #33201d; --verdict: #ec9a72; --verdict-soft: #33251e;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1614; --surface: #16201d; --ink: #e6ece9; --muted: #9aa8a3;
+  --line: #2a3632; --accent: #6fc2a3; --accent-soft: #1b2e28; --flag: #4a4120;
+  --pdt: #a9c19f; --pdt-soft: #222b20; --lnj: #f07a6c; --lnj-soft: #33201d; --verdict: #ec9a72; --verdict-soft: #33251e;
+    color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font: 400 1.0625rem/1.6 var(--font-body);
+  margin: 0; padding-inline: 20px;
+}
+.wrap { max-width: 1040px; margin: 0 auto; }
+a { color: var(--accent); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+header.site {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 12px 32px; padding-block: 22px; border-bottom: 1px solid var(--line);
+}
+.mark { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+.mark svg { width: 30px; height: 30px; flex: none; }
+.mark span { font: 800 1.25rem/1 var(--font-display); font-stretch: 112%; letter-spacing: .02em; }
+nav { display: flex; flex-wrap: wrap; gap: 4px 22px; }
+nav a { color: var(--muted); text-decoration: none; font-weight: 600; font-size: .95rem; }
+nav a:hover { color: var(--ink); }
+
+.label {
+  font: 500 .75rem/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent);
+}
+h1, h2, h3 { font-family: var(--font-display); font-stretch: 112%; text-wrap: balance; margin: 0; }
+h1 { font-weight: 800; font-size: clamp(2.2rem, 6vw, 3.9rem); line-height: 1.02; letter-spacing: -.01em; }
+h2 { font-weight: 800; font-size: clamp(1.6rem, 3.6vw, 2.3rem); line-height: 1.1; }
+h3 { font-weight: 600; font-size: 1.2rem; line-height: 1.25; }
+p { margin: 0; max-width: 62ch; }
+
+.hero { display: grid; gap: 22px; padding-block: 72px 64px; }
+.hero p.lede { font-size: 1.25rem; color: var(--muted); }
+.facts {
+  display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 8px;
+  font: 500 .82rem/1.4 var(--font-mono); color: var(--muted);
+}
+.facts b { color: var(--ink); font-weight: 500; }
+
+section.block { padding-block: 56px; border-top: 1px solid var(--line); }
+.block-head { display: grid; gap: 12px; margin-bottom: 32px; }
+.block-head p { color: var(--muted); }
+
+.ledger { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.item {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 6px;
+  padding: 24px; display: grid; gap: 12px; align-content: start; min-width: 0;
+}
+.item .status {
+  justify-self: start; font: 500 .7rem/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase;
+  background: var(--accent-soft); color: var(--accent); padding: 6px 8px; border-radius: 3px;
+}
+.item p { color: var(--muted); font-size: 1rem; }
+.item .for { font: 500 .78rem/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-top: -4px; }
+.item.feature { grid-column: 1 / -1; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px 40px; }
+.feature-main { display: grid; gap: 12px; align-content: start; min-width: 0; }
+.feature .pitch { color: var(--ink); font-size: 1.15rem; font-weight: 600; }
+.visit { justify-self: start; font-weight: 600; }
+.steps { margin: 0; padding: 0; list-style: none; counter-reset: step; display: grid; gap: 14px; align-content: start; min-width: 0; }
+.steps li { counter-increment: step; display: grid; grid-template-columns: 2rem 1fr; gap: 8px; color: var(--muted); font-size: 1rem; }
+.steps li::before { content: counter(step); font: 500 .8rem/1.9 var(--font-mono); color: var(--accent); background: var(--accent-soft); border-radius: 50%; width: 1.8rem; height: 1.8rem; text-align: center; }
+.steps b { color: var(--ink); font-weight: 600; }
+.feature-side { display: grid; gap: 14px; align-content: start; min-width: 0; }
+.sub { font: 500 .72rem/1.2 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.feature .links { display: grid; gap: 4px; }
+.feature .links a { font-weight: 600; }
+.gets { margin: 0; padding-left: 1.1rem; display: grid; gap: 8px; color: var(--muted); font-size: 1rem; }
+.gets b, .feature-main p b { color: var(--ink); font-weight: 600; }
+.example { margin: 6px 0 0; padding: 16px 18px; background: var(--bg); border-radius: 4px; display: grid; gap: 8px; font-size: .98rem; color: var(--muted); }
+.example b { color: var(--ink); }
+.fine { grid-column: 1 / -1; font-size: .82rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 12px; max-width: none; }
+.pdt { --p: var(--pdt); --ps: var(--pdt-soft); }
+.lnj { --p: var(--lnj); --ps: var(--lnj-soft); }
+.verdict { --p: var(--verdict); --ps: var(--verdict-soft); }
+.feature .status { background: var(--ps); color: var(--p); }
+.feature h3 { color: var(--p); font-size: 1.45rem; }
+.pdt h3 { font-family: "Playfair Display", Georgia, serif; font-stretch: normal; }
+.feature .steps li::before { background: var(--ps); color: var(--p); }
+.feature a { color: var(--p); }
+.item.more { background: transparent; border-style: dashed; }
+
+.about { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px 48px; }
+dl { margin: 0; display: grid; gap: 14px; }
+dl div { display: grid; grid-template-columns: 9.5rem 1fr; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+dt { font: 500 .78rem/1.6 var(--font-mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+dd { margin: 0; min-width: 0; }
+
+.todo { background: var(--flag); padding: 0 4px; border-radius: 2px; }
+
+.contact { display: grid; gap: 16px; }
+.contact .email { font: 600 clamp(1.3rem, 3vw, 1.7rem)/1.2 var(--font-display); font-stretch: 112%; }
+
+footer { padding-block: 32px 48px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem;
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
+
+@media (max-width: 480px) {
+  dl div { grid-template-columns: 1fr; gap: 2px; }
+  .hero { padding-block: 48px 44px; }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+html { scroll-behavior: smooth; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <a class="mark" href="index.html#top" aria-label="Bolan LLC home">
+      <svg viewBox="0 0 30 30" aria-hidden="true">
+        <rect x="1" y="1" width="28" height="28" rx="4" fill="var(--accent)"/>
+        <path d="M9 7h7.5a4.5 4.5 0 0 1 0 9H9zM9 16h8.5a4 4 0 0 1 0 8H9z" fill="none" stroke="var(--bg)" stroke-width="2.6" stroke-linejoin="round"/>
+      </svg>
+      <span>BOLAN LLC</span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="index.html#products">Products</a>
+      <a href="index.html#software">Software</a>
+      <a href="index.html#company">Company</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <span class="label">Privacy</span>
+      <h1>Privacy notice</h1>
+      <p class="lede">This website is informational. It has no accounts, forms, tracking or advertising, and it does not set cookies.</p>
+    </section>
+    <section class="block">
+      <div class="block-head">
+        <h2>What we collect</h2>
+        <p>We do not collect personal information through this website. If you email us, we use your message and address only to reply and to follow up on your inquiry. We do not sell or share it.</p>
+      </div>
+      <div class="block-head">
+        <h2>Third-party services</h2>
+        <p>Our web host may keep standard server logs, such as IP addresses and pages requested, to operate and secure the site. Fonts are served by Google Fonts, which receives your IP address when the page loads.</p>
+      </div>
+      <div class="block-head">
+        <h2>Questions</h2>
+        <p>Contact us at the email address on our <a href="index.html#contact">contact section</a>.</p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <span>© 2026 Bolan LLC. All rights reserved.</span>
+    <span>A Wyoming limited liability company. <a href="privacy.html">Privacy</a></span>
+  </footer>
+</div>
+</body>
+</html>
